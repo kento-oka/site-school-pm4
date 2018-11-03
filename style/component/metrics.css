@@ -1,0 +1,82 @@
+/* how use
+<ul class="metrics">
+    <li>
+        <div><span>1611</span></div><!-- first div is value area -->
+        <div><span>Total execution time</span></div><!-- last div is key area -->
+    </li>
+    <li>
+        <div>
+            <span>1611</span>
+            <span>ms</span>
+        </div>
+        <div>
+            <span>Total execution time</span>
+        </div>
+    </li>
+</ul>
+*/
+ul.metrics {
+    display: block;
+    list-style: none;
+    flex-flow: row wrap;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border: 0;
+}
+ul.metrics:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+ul.metrics li{
+    float: left;
+    display: block;
+    margin: 0 10px 10px 0;
+    width: auto;
+    height: 70px;
+    padding: 0;
+    box-sizing: border-box;
+    box-shadow: 0 0 1px 1px #ddd;
+    background: #fff;
+}
+
+ul.metrics li > div{
+    display: none;
+}
+
+ul.metrics li > div:first-child,
+ul.metrics li > div:last-child{
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 70px;
+    white-space: nowrap;
+}
+
+ul.metrics li > div:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+ul.metrics li > div:first-child :not(:first-child){
+    color: #999;
+    font-size: 16px;
+}
+
+ul.metrics li > div:last-child{
+    height: 20px;
+    padding: 0 10px;
+    background: #ddd;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px
+}

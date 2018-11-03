@@ -1,0 +1,52 @@
+/* how use.
+<div class="code">
+    <ol start="159"><!-- start line number -->
+        <li><div><code></code><code></code></div></li><!-- first <code> is indent area. last <code> is code area. -->
+        <li class="highlight"><div><code></code><code></code></div></li><!-- if use .highlight, this line is highlight.  -->
+    </ol>
+</div>
+*/
+.code{
+    overflow: hidden;
+    position: relative;
+    padding: .1em 0;
+    background: #fff;
+}
+.code ol{
+    margin: 0;
+    margin-left: 4em;
+    width: calc(100% - 4em);
+    height: auto;
+    padding: 0;
+    background:#fff;
+}
+.code li{
+    margin: 0;
+    width: 100%;
+    height: auto;
+    min-height: 1.4em;
+    padding: 0;
+    border-left: 1px #ddd solid;
+    font-size: 1em;
+    line-height: 1.4em;
+    color: #666;
+}
+.code li div{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+.code li.highlight{
+    background: #f7e5a1;
+}
+.code li code{
+    width: auto;
+    height: auto;
+    min-height: 1.4em;
+    color: #222;
+    word-break:break-all;
+    word-wrap: break-word;
+}
+.code li code:last-child{
+    flex: 1;
+}

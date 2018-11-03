@@ -1,0 +1,73 @@
+dt{
+    margin: 5px auto 0;
+    padding: 5px 0 0;
+}
+dd{
+    margin: 5px auto 0;
+    width: 100%;
+    padding: 0 0 10px 4%;
+}
+
+dl.split dt{
+    border-top: 1px #ddd solid;
+}
+dl.split dt:first-of-type{
+    border: none;
+}
+dl.split :last-child{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+dl.table{
+    margin: 0;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    box-shadow: 0 0 1px 1px #ddd;
+    background: #ddd;
+}
+dl.table dt{
+    float: left;
+    margin: 0;
+    width: 30%;
+    height: auto;
+    min-height: 1em;
+    padding: 5px;
+    border-top: 1px #fff solid;
+}
+dl.table dd{
+    box-sizing: border-box;
+    margin: 0 0 0 30%;
+    width: 70%;
+    height: auto;
+    min-height: 1em;
+    border-top: 1px #ddd solid;
+    padding: 5px;
+    background: #fff;
+}
+dl.table dd + dd{
+    border-top-style: dotted;
+}
+dl.table dt:first-of-type,
+dl.table dd:first-of-type{
+    border: none;
+}
+dl.table dd:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+@media (max-width: 500px) {
+    dl.table dt{
+        float: none;
+        width: 100%;
+    }
+    dl.table dd{
+        box-sizing: border-box;
+        margin: 0;
+        width: 100%;
+        padding: 5px;
+        padding-left: 4%;
+    }
+}

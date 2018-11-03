@@ -1,0 +1,116 @@
+/*
+<ul class="tabs" data-tabs-group="psr">
+    <li data-tabs-tab="psr0">psr-0</li>
+    <li data-tabs-tab="psr1">psr-1</li>
+    <li data-tabs-tab="psr2">psr-2</li>
+    <li data-tabs-tab="psr3">psr-3 log</li>
+    <li data-tabs-tab="psr4">psr-4</li>
+</ul>
+<div class="tabs-tab" data-tabs-tab="psr0"><span>psr0</span></div>
+<div class="tabs-tab" data-tabs-tab="psr1"><span>psr1</span></div>
+<div class="tabs-tab" data-tabs-tab="psr2"><span>psr2</span></div>
+<div class="tabs-tab" data-tabs-tab="psr3"><span>psr3</span></div>
+<div class="tabs-tab" data-tabs-tab="psr4"><span>psr4</span></div>
+<script>
+    (function(){
+        var tabList         = document.querySelectorAll('ul.tabs li'),
+            tabCount        = tabList.length,
+            selectClass     = 'selected',
+            getTabElements  = function(name){
+                if('string' !== typeof name){
+                    return [];
+                }
+
+                return document.querySelectorAll(
+                    '[data-tabs-tab="' + name + '"]'
+                );
+            },
+            removeSelected  = function(name){
+                var tabs        = getTabElements(name),
+                    tabsCount   = tabs.length
+                ;
+
+                for(var i = 0; i < tabsCount; i++){
+                    if(tabs[i].classList.contains(selectClass)){
+                        tabs[i].classList.remove(selectClass);
+                    }
+                }
+            },
+            addSelected     = function(name){
+                var tabs        = getTabElements(name),
+                    tabsCount   = tabs.length
+                ;
+
+                for(var i = 0; i < tabsCount; i++){
+                    if(!tabs[i].classList.contains(selectClass)){
+                        tabs[i].classList.add(selectClass);
+                    }
+                }
+            },
+            getTabName      = function($dom){
+                if('undefined' === typeof $dom.dataset.tabsTab){
+                    return null;
+                }
+
+                return $dom.dataset.tabsTab;
+            }
+        ;
+
+        for(var i = 0; i < tabCount; i++){
+            tabList[i].addEventListener(
+                'click',
+                function(){
+                    var brotherTabs = this.parentNode.children,
+                        brotherCnt  = brotherTabs.length
+                    ;
+
+                    for(var i = 0; i < brotherCnt; i++){
+                        removeSelected(getTabName(brotherTabs[i]));
+                    }
+
+                    addSelected(getTabName(this));
+                },
+                false
+            );
+        }
+    })();
+</script>
+*/
+
+ul.tabs{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0;
+    border: 0;
+}
+ul.tabs:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+ul.tabs li{
+    list-style: none;
+    display: none;
+    margin: 0 10px 10px 0;
+    width: auto;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 1px #ddd;
+    background: #ddd;
+    word-wrap: break-word;
+    color: #333;
+    text-align: center;
+    transition: background .2s ease;
+    cursor: pointer;
+}
+ul.tabs li[data-tabs-tab]{
+    display: block;
+}
+ul.tabs li.selected{
+    background: #fff;
+}
+
+.tabs-tab:not(.selected){
+    display: none;
+}

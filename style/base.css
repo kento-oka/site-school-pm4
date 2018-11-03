@@ -1,0 +1,178 @@
+*{
+    box-sizing: border-box;
+}
+abbr[title] {
+    border-bottom: none;
+    cursor: help;
+    text-decoration: none;
+}
+details summary{
+    cursor: pointer;
+}
+h1{/* use once */
+    display: block;
+    margin: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: normal;
+    color: #f9f9f9;
+}
+.center-container{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1024px;
+    height: auto;
+    border: 0;
+    padding: 0;
+}
+@media (max-width: 1024px) {
+    .center-container{
+        padding: 0 2%;
+    }
+}
+.horizon-scroll{
+    overflow: visible;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+html, body{
+    overflow: hidden;
+    margin: 0;
+    width: 100vw;
+    min-width: 300px;
+    height: 100vh;
+    padding: 0;
+}
+body{
+    position: relative;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+#menu{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: #333;
+}
+#menu ul{
+    overflow: hidden;
+    list-style: none;
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+}
+#menu li{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 40px;
+    transition: all .3s ease;
+    color: #eee;
+}
+#menu li.selected,
+#menu li:hover{
+    background: #aaa;
+    color: #111;
+}
+#menu li div{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    padding:0;
+}
+#menu li div svg{
+    width: 25px;
+    height: 25px;
+    fill: currentColor;
+}
+#menu li a{
+    display: block;
+    margin: 0 0 0 50px;
+    width: calc(100% - 50px);
+    height: 100%;
+    padding: 0;
+    cursor: pointer;
+}
+#main-wrapper{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background: #f9f9f9;
+    transition: all .3s ease;
+}
+#menu ~ #main-wrapper{
+    width: calc(100% - 40px);
+    transform: translateX(40px);
+}
+#menu:hover ~ #main-wrapper{
+    transform: translateX(240px);
+}
+#header{
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    background: #333;
+}
+#header .title{
+    width: 100%;
+    height: auto;
+    padding: 5px 0;
+    background: #9E3A38;
+    font-size: .8em;
+    color: #eee;
+}
+#header .message{
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    background: #B0413E;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+}
+#main{
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    height: auto;
+    padding-bottom: 30px;
+}
+section{
+    margin: 30px auto 0;
+    width: 100%;
+    height: auto;
+    padding: 5px 2%;
+    box-shadow: 0 0 2px #ddd;
+}
+section > header{
+    margin: 0 auto 10px;
+    width: 100%;
+    height: auto;
+    padding: 0 0 5px;
+    border-bottom: 2px #555 solid;
+}
+section > header h2{
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+}

@@ -1,0 +1,125 @@
+/* how use
+<span class="icon-warn"></span>
+*/
+
+.icon-error,
+.icon-info,
+.icon-warn,
+.icon-null,
+.icon-check,
+.icon-cross{
+    position: relative;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: top;
+}
+
+/* --- icon info --- */
+.icon-info{
+    background:#37b;
+}
+.icon-info::before,
+.icon-info::after{
+    left: 42.5%;
+    position: absolute;
+    display: block;
+    content: "";
+    background: #fff;
+}
+.icon-info::before{
+    top: 10%;
+    width: 15%;
+    height: 15%;
+    border-radius: 50%;
+}
+.icon-info::after{
+    top: 35%;
+    width: 15%;
+    height: 55%;
+}
+
+/* --- icon warn --- */
+.icon-warn{
+    border-color: transparent transparent #ea5 transparent;
+    border-style: solid;
+    border-width: .2em .75em 1.3em .75em;
+    box-sizing: border-box;
+}
+.icon-warn::before,
+.icon-warn::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    content: "";
+    background: #555;
+}
+.icon-warn::before{
+    width: .2em;
+    height: .6em;
+    transform: translateX(-.1em) translateY(.3em);
+}
+.icon-warn::after{
+    width: .2em;
+    height: .2em;
+    transform: translateX(-.1em) translateY(1em);
+}
+
+/* --- icon error --- */
+.icon-error{
+    background: #d55;
+    border-radius: 50%;
+}
+.icon-error::before,
+.icon-error::after{
+    position: absolute;
+    top: 42.5%;
+    left: 10%;
+    display: block;
+    content: "";
+    width: 80%;
+    height: 15%;
+    background: #fff;
+}
+.icon-error::before{
+    transform: rotate(45deg);
+}
+.icon-error::after{
+    transform: rotate(-45deg);
+}
+
+/* --- icon cross --- */
+.icon-cross::before,
+.icon-cross::after{
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    display: block;
+    content: "";
+    width: 90%;
+    height: 20%;
+    background: #d55;
+}
+.icon-cross::before{
+    transform: rotate(45deg);
+}
+.icon-cross::after{
+    transform: rotate(-45deg);
+}
+
+/* --- icon check --- */
+.icon-check::before{
+    position: absolute;
+    top: calc(50% - 15% - .15em);
+    left: calc(50% - 25% - .15em);
+    display: block;
+    content: "";
+    width: 70%;
+    height: 40%;
+    border-width:  0 0 .3em .3em;
+    border-color: #5d5;
+    border-style: solid;
+    box-sizing: border-box;
+    transform: rotate(-50deg);
+}
