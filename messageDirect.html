@@ -13,11 +13,117 @@
         <link rel="stylesheet" href="./style/component/icon.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/utatti/perfect-scrollbar/54103fab/css/perfect-scrollbar.css">
         <style>
-            #header .title{
-                background: #1a6b1c;
+            /**
+             * @see https://saruwakakun.com/html-css/reference/speech-bubble
+             */
+            #line-bc {
+                position: relative;
+                margin : 10px auto;
+                max-width: 700px;
+                max-height: calc(90vh - 200px);
+                text-align: right;
             }
-            #header .message{
-                background: #207823;
+            .balloon6 {
+                width: 100%;
+                margin: 10px 0;
+                overflow: hidden;
+            }
+            .balloon6 .faceicon {
+                float: left;
+                margin-right: -50px;
+                width: 40px;
+            }
+            .balloon6 .faceicon img{
+                width: 100%;
+                height: auto;
+                border-radius: 50%;
+            }
+            .balloon6 .chatting {
+                width: 100%;
+                text-align: left;
+            }
+            .says {
+                display: inline-block;
+                position: relative; 
+                margin: 0 0 0 50px;
+                padding: 10px;
+                max-width: 250px;
+                border-radius: 12px;
+                background: #ccc;
+            }
+            .says:after {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                top: 3px; 
+                left: -19px;
+                border: 8px solid transparent;
+                border-right: 18px solid #ccc;
+                transform: rotate(35deg);
+            }
+            .says p {
+                margin: 0;
+                padding: 0;
+            }
+            .mycomment {
+                margin: 10px 0;
+            }
+            .mycomment p{
+                display: inline-block;
+                position: relative; 
+                margin: 0 10px 0 0;
+                padding: 8px;
+                max-width: 250px;
+                border-radius: 12px;
+                background: #ccc;
+                font-size: 15px;
+            }
+            .mycomment p:after {
+                content: "";
+                position: absolute;
+                top: 3px; 
+                right: -19px;
+                border: 8px solid transparent;
+                border-left: 18px solid #ccc;
+                transform: rotate(-35deg);
+            }
+            .form_send{
+                margin : 10px auto;
+                max-width: 700px;
+            }
+            .form_send form{
+                position: relative;
+                width: 100%;
+                height: 60px;
+            }
+            .form_send form textarea{
+                width: 80%;
+                height: 100%;
+                border: none;
+                border-radius: 5px;
+                outline: 0;
+                background: #bbb;
+                backface-visibility: hidden;
+                transition: .3s ease-out;
+            }
+            .form_send form textarea:focus{
+                background: #ccc;
+            }
+            .form_send form button{
+                position:absolute;
+                top:0;
+                right:0;
+                width: 15%;
+                height: 100%;
+                border:none;
+                border-radius:16px;
+                color: #fff;
+                background:#1b73ba;
+                backface-visibility: hidden;
+                transition: .3s ease;
+            }
+            .form_send form button:hover{
+                opacity:0.8;
             }
         </style>
     </head>
@@ -26,19 +132,19 @@
             <ul>
                 <li>
                     <div>
-                        <svg viewBox="0 0 512 512"><g><path class="st0" d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z"></path><path class="st0" d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z"></path></g></svg>
+                        <svg viewBox="0 0 512 512"><g><path d="M256,265.308c73.252,0,132.644-59.391,132.644-132.654C388.644,59.412,329.252,0,256,0 c-73.262,0-132.643,59.412-132.643,132.654C123.357,205.917,182.738,265.308,256,265.308z"></path><path d="M425.874,393.104c-5.922-35.474-36-84.509-57.552-107.465c-5.829-6.212-15.948-3.628-19.504-1.427 c-27.04,16.672-58.782,26.399-92.819,26.399c-34.036,0-65.778-9.727-92.818-26.399c-3.555-2.201-13.675-4.785-19.505,1.427 c-21.55,22.956-51.628,71.991-57.551,107.465C71.573,480.444,164.877,512,256,512C347.123,512,440.427,480.444,425.874,393.104z"></path></g></svg>
                     </div>
                     <a>プロフィール</a>
                 </li>
                 <li class="selected">
                     <div>
-                        <svg viewBox="0 0 512 512"><g><path class="st0" d="M345.293,131.536V99.417c0-30.758-24.924-55.691-55.692-55.691H55.691C24.924,43.726,0,68.659,0,99.417V273.8 c0,30.758,24.924,55.691,55.691,55.691h20.512l-16.674,83.354l114.068-83.354h21.383V218.482c0-47.938,39-86.946,86.948-86.946 H345.293z"></path><path class="st0" d="M456.309,162.792H281.928c-30.767,0-55.692,24.933-55.692,55.691v125.118 c0,30.758,24.925,55.691,55.692,55.691h86.406l94.394,68.982l-13.797-68.982h7.378c30.758,0,55.691-24.933,55.691-55.691V218.482 C512,187.724,487.067,162.792,456.309,162.792z"></path></g></svg>
+                        <svg viewBox="0 0 512 512"><g><path d="M345.293,131.536V99.417c0-30.758-24.924-55.691-55.692-55.691H55.691C24.924,43.726,0,68.659,0,99.417V273.8 c0,30.758,24.924,55.691,55.691,55.691h20.512l-16.674,83.354l114.068-83.354h21.383V218.482c0-47.938,39-86.946,86.948-86.946 H345.293z"></path><path d="M456.309,162.792H281.928c-30.767,0-55.692,24.933-55.692,55.691v125.118 c0,30.758,24.925,55.691,55.692,55.691h86.406l94.394,68.982l-13.797-68.982h7.378c30.758,0,55.691-24.933,55.691-55.691V218.482 C512,187.724,487.067,162.792,456.309,162.792z"></path></g></svg>
                     </div>
-                    <a>メッセージ</a>
+                    <a href="./message.html">メッセージ</a>
                 </li>
                 <li>
                     <div>
-                        <svg viewBox="0 0 512 512"><g><path class="st0" d="M497.569,215.166l-55.345-13.064c-4.032-13.946-9.495-27.27-16.376-39.732l29.85-48.303 c4.57-7.397,3.452-16.946-2.688-23.086l-31.99-31.99c-6.129-6.129-15.678-7.248-23.076-2.678l-48.292,29.851 c-12.462-6.882-25.785-12.344-39.732-16.377l-13.064-55.368C294.856,5.978,287.306,0,278.63,0h-45.237 c-8.678,0-16.227,5.978-18.227,14.419l-13.064,55.368c-13.946,4.032-27.27,9.484-39.732,16.377l-48.303-29.872 c-7.387-4.549-16.946-3.441-23.086,2.699L58.99,90.97c-6.13,6.14-7.248,15.709-2.689,23.087l29.862,48.313 c-6.882,12.462-12.344,25.786-16.367,39.721l-55.378,13.065C5.978,217.165,0,224.704,0,233.392v45.226 c0,8.678,5.978,16.237,14.419,18.226l55.378,13.065c4.032,13.946,9.485,27.259,16.367,39.71l-29.872,48.324 c-4.549,7.398-3.441,16.957,2.699,23.098l31.979,31.979c6.14,6.14,15.709,7.257,23.087,2.688l48.323-29.872 c12.463,6.882,25.786,12.344,39.722,16.366l13.064,55.366c2,8.463,9.549,14.431,18.227,14.431h45.237 c8.677,0,16.226-5.968,18.226-14.431l13.064-55.366c13.937-4.021,27.259-9.484,39.712-16.366l48.312,29.861 c7.398,4.57,16.947,3.452,23.087-2.688l31.989-31.99c6.13-6.129,7.248-15.688,2.678-23.087l-29.861-48.302 c6.893-12.452,12.345-25.774,16.377-39.721l55.366-13.065c8.463-2.001,14.42-9.539,14.42-18.226v-45.238 C512,224.714,506.032,217.165,497.569,215.166z M256.006,303.103c-26.002,0-47.098-21.097-47.098-47.108 s21.097-47.108,47.098-47.108c26.011,0,47.108,21.097,47.108,47.108S282.017,303.103,256.006,303.103z"></path></g></svg>
+                        <svg viewBox="0 0 512 512"><g><path d="M497.569,215.166l-55.345-13.064c-4.032-13.946-9.495-27.27-16.376-39.732l29.85-48.303 c4.57-7.397,3.452-16.946-2.688-23.086l-31.99-31.99c-6.129-6.129-15.678-7.248-23.076-2.678l-48.292,29.851 c-12.462-6.882-25.785-12.344-39.732-16.377l-13.064-55.368C294.856,5.978,287.306,0,278.63,0h-45.237 c-8.678,0-16.227,5.978-18.227,14.419l-13.064,55.368c-13.946,4.032-27.27,9.484-39.732,16.377l-48.303-29.872 c-7.387-4.549-16.946-3.441-23.086,2.699L58.99,90.97c-6.13,6.14-7.248,15.709-2.689,23.087l29.862,48.313 c-6.882,12.462-12.344,25.786-16.367,39.721l-55.378,13.065C5.978,217.165,0,224.704,0,233.392v45.226 c0,8.678,5.978,16.237,14.419,18.226l55.378,13.065c4.032,13.946,9.485,27.259,16.367,39.71l-29.872,48.324 c-4.549,7.398-3.441,16.957,2.699,23.098l31.979,31.979c6.14,6.14,15.709,7.257,23.087,2.688l48.323-29.872 c12.463,6.882,25.786,12.344,39.722,16.366l13.064,55.366c2,8.463,9.549,14.431,18.227,14.431h45.237 c8.677,0,16.226-5.968,18.226-14.431l13.064-55.366c13.937-4.021,27.259-9.484,39.712-16.366l48.312,29.861 c7.398,4.57,16.947,3.452,23.087-2.688l31.989-31.99c6.13-6.129,7.248-15.688,2.678-23.087l-29.861-48.302 c6.893-12.452,12.345-25.774,16.377-39.721l55.366-13.065c8.463-2.001,14.42-9.539,14.42-18.226v-45.238 C512,224.714,506.032,217.165,497.569,215.166z M256.006,303.103c-26.002,0-47.098-21.097-47.098-47.108 s21.097-47.108,47.098-47.108c26.011,0,47.108,21.097,47.108,47.108S282.017,303.103,256.006,303.103z"></path></g></svg>
                     </div>
                     <a>設定</a>
                 </li>
@@ -46,268 +152,56 @@
         </nav>
         <div id="main-wrapper">
             <header id="header">
-                <div class="title">
-                    <div class="center-container">
-                        <figure>
-                            <img src="">
-                            <figcaption>話し相手</figcaption>
-                        </figure>
-                    </div>
+                <div class="center-container">
+                    <h1>システム名</h1>
                 </div>
             </header>
             <main id="main">
                 <div class="center-container">
                     <section>
                         <header>
-                            <h2>
-                                <abbr title="Symfony\Component\Debug\Exception\ClassNotFoundException">ClassNotFoundException</abbr>
-                            </h2>
+                            <h2>伊豆 祐輝 - メッセージ</h2>
                         </header>
-                        <dl class="split">
-                            <dt>in vendor\twig\extensions\lib\Twig\Extensions\Extension\Intl.php (line 71)</dt>
-                            <dd>
-                                <details>
-                                    <summary>source code</summary>
-                                    <div class="code">
-                                        <ol start="159">
-                                            <li><div><code></code><code></code></div></li>
-                                            <li class="highlight"><div><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){</code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(is_string($service)){</code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(!class_exists($service)){</code></div></li>
-                                            <li class="highlight"><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>throw new \InvalidArgumentException();</code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>}</code></div></li>
-                                            <li><div><code></code><code></code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(!$this->resolver->getClassResolver($service)->getReflection()->isInstantiable()){</code></div></li>
-                                        </ol>
+                        <div id="line-bc">
+                            <div class="balloon6">
+                                <div class="faceicon">
+                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
+                                </div>
+                                <div class="chatting">
+                                    <div class="says">
+                                        <p>木曾路はすべて山の中である。あるところは岨づたいに行く崖の道であり、あるところは数十間の深さに臨む木曾川の岸であり、あるところは山の尾をめぐる谷の入り口である。</p>
                                     </div>
-                                </details>
-                            </dd>
-                            <dt>in vendor\twig\extensions\lib\Twig\Extensions\Extension\Intl.php (line 71)</dt>
-                            <dd>
-                                <details>
-                                    <summary>source code</summary>
-                                    <div class="code">
-                                        <ol start="159">
-                                            <li><div><code></code><code></code></div></li>
-                                            <li class="highlight"><div><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){if(is_string($service)){</code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(is_string($service)){</code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(!class_exists($service)){</code></div></li>
-                                            <li class="highlight"><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>throw new \InvalidArgumentException();</code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>}</code></div></li>
-                                            <li><div><code></code><code></code></div></li>
-                                            <li><div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>if(!$this->resolver->getClassResolver($service)->getReflection()->isInstantiable()){</code></div></li>
-                                        </ol>
+                                </div>
+                            </div>
+                            <div class="balloon6">
+                                <div class="faceicon">
+                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
+                                </div>
+                                <div class="chatting">
+                                    <div class="says">
+                                        <p>一筋の街道はこの深い森林地帯を貫いていた。東ざかいの桜沢から、西の十曲峠まで、木曾十一宿はこの街道に添うて、二十二里余にわたる長い谿谷の間に散在していた。道路の位置も幾たびか改まったもので、古道はいつのまにか深い山間に埋もれた。</p>
                                     </div>
-                                </details>
-                            </dd>
-                        </dl>
-                    </section>
-                    <section>
-                        <header>
-                            <h2>Metrics</h2>
-                        </header>
-                        <ul class="metrics">
-                            <li>
-                                <div>
-                                    <span>7.2.4</span>
                                 </div>
-                                <div>
-                                    <span>PHP version</span>
+                            </div>
+                            <div class="mycomment">
+                                <p>えぇ…</p>
+                            </div>
+                            <div class="balloon6">
+                                <div class="faceicon">
+                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
                                 </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span class="icon-error"></span>
+                                <div class="chatting">
+                                    <div class="says">
+                                        <p>名高い桟も、蔦のかずらを頼みにしたような危い場処ではなくなって、徳川時代の末にはすでに渡ることのできる橋であった。新規に新規にとできた道はだんだん谷の下の方の位置へと降って来た。</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span>Error mark</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span class="icon-info"></span>
-                                </div>
-                                <div>
-                                    <span>Info mark</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span class="icon-warn"></span>
-                                </div>
-                                <div>
-                                    <span>Warn mark</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span class="icon-null"></span>
-                                </div>
-                                <div>
-                                    <span>Null mark</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span class="icon-check"></span>
-                                </div>
-                                <div>
-                                    <span>Check mark</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span class="icon-cross"></span>
-                                </div>
-                                <div>
-                                    <span>Cross mark</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span>1611</span>
-                                    <span>ms</span>
-                                </div>
-                                <div>
-                                    <span>Total execution time</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <span>2.00</span>
-                                    <span>MB</span>
-                                </div>
-                                <div>
-                                    <span>Peak memory usage</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <header>
-                            <h2>dl.table</h2>
-                        </header>
-                        <dl class="table">
-                            <dt>key</dt>
-                            <dd>val</dd>
-                            <dt>key</dt>
-                            <dd>val</dd>
-                            <dt>key</dt>
-                            <dd>val</dd>
-                            <dt>key</dt>
-                            <dd>val</dd>
-                            <dd>val</dd>
-                            <dd>val</dd>
-                            <dd>val</dd>
-                            <dt>key</dt>
-                            <dd>val</dd>
-                        </dl>
-                    </section>
-                    <section>
-                        <header>
-                            <h2>Table</h2>
-                        </header>
-                        <div class="horizon-scroll">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>abcdefghijklm</th>
-                                        <th>nopqrxtuvwxyz</th>
-                                        <th>赤巻上青巻紙黄巻紙</th>
-                                        <th>隣の客はよく柿食う客だ</th>
-                                        <th>隣の客はよく柿食う客だ</th>
-                                        <th>隣の客はよく柿食う客だ</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>あえいうえおあお</td>
-                                        <td>いろはにほへとちりぬるを</td>
-                                        <td>はるはあけぼの</td>
-                                        <td>なつはさざなみ</td>
-                                        <td>あきはおぼろ</td>
-                                        <td>ふゆはうしお</td>
-                                    </tr>
-                                    <tr>
-                                        <td>あえいうえおあお</td>
-                                        <td>いろはにほへとちりぬるを</td>
-                                        <td>はるはあけぼの</td>
-                                        <td>なつはさざなみ</td>
-                                        <td>あきはおぼろ</td>
-                                        <td>ふゆはうしお</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            </div>
                         </div>
-                    </section>
-                    <section>
-                        <header>
-                            <h2>Tabs</h2>
-                        </header>
-                        <ul class="tabs" data-tabs-group="psr">
-                            <li data-tabs-tab="psr0">psr-0</li>
-                            <li data-tabs-tab="psr1">psr-1</li>
-                            <li data-tabs-tab="psr2">psr-2</li>
-                            <li data-tabs-tab="psr3">psr-3 log</li>
-                            <li data-tabs-tab="psr4">psr-4</li>
-                            <li data-tabs-tab="psr5">psr-5 phpdoc</li>
-                            <li data-tabs-tab="psr6">psr-6 cache</li>
-                            <li data-tabs-tab="psr7">psr-7 httm-message</li>
-                            <li data-tabs-tab="psr8">psr-8 haggable</li>
-                            <li data-tabs-tab="psr11">psr-11 container</li>
-                        </ul>
-                        <div class="tabs-tab" data-tabs-tab="psr0">
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                            <span>psr0</span><br>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr1">
-                            <span>psr1</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr2">
-                            <span>psr2</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr3">
-                            <span>psr3</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr4">
-                            <span>psr4</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr5">
-                            <span>psr5</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr6">
-                            <span>psr6</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr7">
-                            <span>psr7</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr8">
-                            <span>psr8</span>
-                        </div>
-                        <div class="tabs-tab" data-tabs-tab="psr11">
-                            <span>psr11</span>
+                        <div class="form_send">
+                            <form>
+                                <textarea></textarea>
+                                <button type="submit">送信</button>
+                            </form>
                         </div>
                     </section>
                 </div>
@@ -333,6 +227,16 @@
                     );
                 }
 
+                if(null !== document.querySelector('#line-bc')){
+                    new PerfectScrollbar(
+                        '#line-bc',
+                        {
+                            "suppressScrollX": true,
+                            "wheelPropagation": false,
+                        }
+                    );
+                }
+                
                 new PerfectScrollbar(
                     ".horizon-scroll",
                     {
