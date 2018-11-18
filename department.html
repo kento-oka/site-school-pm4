@@ -13,65 +13,86 @@
     <link rel="stylesheet" href="./style/component/icon.css">
     <link rel="stylesheet" href="./style/perfect-scrollbar.css">
     <style>
-        #room-list {
+        /**
+         * 
+         */
+        .cards {
             list-style: none;
-            display: block;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             margin: 0;
             width: 100%;
             height: auto;
             padding: 0;
         }
 
-        #room-list li {
-            display: flex;
-            margin: 10px auto 0;
-            width: 100%;
+        .cards li{
+            overflow: hidden;
+            margin: 10px 0 0;
+            width: 32%;
             height: auto;
-            padding: 5px 0;
-            border-bottom: 1px #ccc solid;
+            padding: 0;
+            box-shadow: 0 2px 5px #ccc;
+        }
+        @media (max-width: 620px) {
+            .cards li{
+                width: 100%;
+            }
+        }
+        @media (min-width: 621px) and (max-width: 1100px) {
+            .cards li{
+                width: 49%;
+            }
         }
 
-        #room-list li:first-of-type {
-            margin-top: 0;
+        .cards li .img {
+            width: 100%;
         }
-
-        #room-list li:last-of-type {
-            border-bottom: none;
+        .cards li .content {
+            margin: 5px auto;
+            width: 95%;
         }
-
-        #room-list li a {
+        .cards li .content h3 {
             display: block;
             width: 100%;
-            height: auto;
-            text-decoration: none;
-            color: inherit;
+            border-left: solid 6px #a55;
+            padding: 0 0 0 .5em;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            font-weight: normal;
         }
-
-        #room-list li .icon {
-            overflow: hidden;
-            margin-left: 5px;
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
+        .cards li .link {
+            width: 100%;
         }
-
-        #room-list li .content {
-            flex: 1;
-        }
-
-        #room-list li .content {
-            flex: 1;
-        }
-
-        #room-list li .content strong {
-            margin-left: 2%;
-        }
-
-        #room-list li .content aside {
-            margin: 5px auto;
-            width: 96%;
-            height: auto;
+        .cards li .link a {
+            display: block;
+            width: 100%;
+            text-align: center;
             color: #555;
+        }
+        .cards li .link a:hover, .cards li .link a:visited, .cards li .link a:link, .cards li .link a:active {
+            color: #555;
+        }
+        .cards li .link a img{
+            width: 100%;
+            object-fit: contain;
+        }
+        .cards li .link a audio{
+            width: 100%;
+        }
+        .cards li .link .youtube {
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .cards li .link .youtube iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -128,7 +149,7 @@
                     <span>お気に入り</span>
                 </a>
             </li>
-            <li class="selected">
+            <li>
                 <a href="./notice.html">
                     <svg viewBox="0 0 510 510">
                         <path d="M255,510c28.05,0,51-22.95,51-51H204C204,487.05,226.95,510,255,510z M420.75,357V216.75 c0-79.05-53.55-142.8-127.5-160.65V38.25C293.25,17.85,275.4,0,255,0c-20.4,0-38.25,17.85-38.25,38.25V56.1 c-73.95,17.85-127.5,81.6-127.5,160.65V357l-51,51v25.5h433.5V408L420.75,357z" />
@@ -152,161 +173,70 @@
         <div class="wrapper">
             <section>
                 <header>
-                    <h2>通知</h2>
+                    <h2>IT・情報処理コース</h2>
                 </header>
-                <ul class="tabs">
-                    <li data-tabs-tab="all" class="selected">全て</li>
-                    <li data-tabs-tab="message">メッセージ</li>
-                    <li data-tabs-tab="invitation">招待</li>
-                </ul>
-                <div class="tabs-tab selected" data-tabs-tab="all">
-                    <ul id="room-list">
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%e3%82%b7%e3%82%b9">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a>
-                                    <header>
-                                        <strong>システム開発グループ</strong>
-                                        <small>2018/11/06</small>
-                                    </header>
-                                    <aside>
-                                        <span>「システム開発グループ」から招待がありました</span>
-                                        <div>
-                                            <button class="btn-consent">承諾する</button>
-                                            <button class="btn-reject">拒否する</button>
-                                        </div>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./profile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./messageDirect.html">
-                                    <header>
-                                        <strong>いずやん</strong>
-                                        <small>2018/11/03</small>
-                                    </header>
-                                    <aside>
-                                        <span>「いずやん」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/87a334/ffffff/64x64.png?text=%e8%b6%a3%e5%91%b3">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./groupMessageDirect.html">
-                                    <header>
-                                        <strong>趣味人グループ</strong>
-                                        <small>2018/10/29</small>
-                                    </header>
-                                    <aside>
-                                        <span>「趣味人グループ」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/87a334/ffffff/64x64.png?text=%e8%b6%a3%e5%91%b3">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./groupMessageDirect.html">
-                                    <header>
-                                        <strong>趣味人グループ</strong>
-                                        <small>2018/10/15</small>
-                                    </header>
-                                    <aside>
-                                        <span>「趣味人グループ」への参加が承認されました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tabs-tab selected" data-tabs-tab="message">
-                    <ul id="room-list">
-                        <li>
-                            <div class="icon">
-                                <a href="./profile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./messageDirect.html">
-                                    <header>
-                                        <strong>いずやん</strong>
-                                        <small>2018/11/03</small>
-                                    </header>
-                                    <aside>
-                                        <span>「いずやん」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/87a334/ffffff/64x64.png?text=%e8%b6%a3%e5%91%b3">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./groupMessageDirect.html">
-                                    <header>
-                                        <strong>趣味人グループ</strong>
-                                        <small>2018/10/29</small>
-                                    </header>
-                                    <aside>
-                                        <span>「趣味人グループ」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tabs-tab selected" data-tabs-tab="invitation">
-                    <ul id="room-list">
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%e3%82%b7%e3%82%b9">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a>
-                                    <header>
-                                        <strong>システム開発グループ</strong>
-                                        <small>2018/11/06</small>
-                                    </header>
-                                    <aside>
-                                        <span>「システム開発グループ」から招待がありました</span>
-                                        <div>
-                                            <button class="btn-consent">承諾する</button>
-                                            <button class="btn-reject">拒否する</button>
-                                        </div>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <h3>ITエキスパート学科</h3>
+                <p>システム構築プロジェクトの中で活躍できるITエンジニアを育成。</p>
+                <p>情報処理技術者試験（基本情報・応用情報・高度）の合格。</p>
+
+                <h3>ITスペシャリスト学科</h3>
+                <p>ITスキルの基礎の上に、 web/インターネット、セキュリティなどの先進的な技術を持ったITエンジニアを育成。</p>
+                <p>情報処理技術者試験（基本情報・応用情報・高度）の合格。</p>
+
+                <h3>情報処理学科 ITエンジニアコース</h3>
+                <p>ITスキルの基礎を身に着け、IT産業界で活躍できるITエンジニアを育成。</p>
+                <p>情報処理技術者試験（基本情報・応用情報）の合格。</p>
+
+                <h3>情報処理学科 Webエンジニアコース</h3>
+                <p>企画からデザイン、ネットワーク・データベース・プログラミング技術など、webエンジニアになるための一連の開発工程を学び、フルスタック人材を育成。</p>
             </section>
-        </div>
+            <section>
+                <header>
+                    <h2>製作物</h2>
+                </header>
+                <ul class="cards">
+                    <li>
+                        <div class="content">
+                            <h3>チャットアプリ</h3>
+                            <p>とても単純なチャットサービス</p>
+                        </div>
+                        <div class="link">
+                            <a href="https://example.com">https://example.com</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <h3>〇〇のテーマソングを作った</h3>
+                            <p>〇〇のテーマソングを作りました。明るい感じをイメージしました。</p>
+                        </div>
+                        <div class="link">
+                            <audio src="https://maoudamashii.jokersounds.com/music/bgm/mp3/bgm_maoudamashii_piano41.mp3" controls>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <h3>学祭のロゴを作成しました</h3>
+                            <p>2018年度学祭のロゴを作成しました。</p>
+                        </div>
+                        <div class="link">
+                            <a href="http://blog.kobedenshi.ac.jp/wp-content/uploads/2017/08/170820_logo-494x349.png">
+                                <img src="http://blog.kobedenshi.ac.jp/wp-content/uploads/2017/08/170820_logo-494x349.png">
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="content">
+                            <h3>いい感じの動画を作りました</h3>
+                            <p>とてもいい感じの動画を作りました。動画選択は趣味です。</p>
+                        </div>
+                        <div class="link">
+                            <div class="youtube">
+                                    <iframe src="https://www.youtube.com/embed/BshXJ7hxcn8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
     </main>
     <script src="./script/perfect-scrollbar.min.js"></script>
     <script src="./script/global.js"></script>

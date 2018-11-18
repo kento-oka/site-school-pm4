@@ -13,65 +13,22 @@
     <link rel="stylesheet" href="./style/component/icon.css">
     <link rel="stylesheet" href="./style/perfect-scrollbar.css">
     <style>
-        #room-list {
-            list-style: none;
-            display: block;
+        input[type="text"],
+        textarea {
             margin: 0;
+            outline: none;
             width: 100%;
-            height: auto;
-            padding: 0;
+            padding: .2em;
+            border: 1px solid #ddd;
+            border-radius: 3px;
         }
-
-        #room-list li {
-            display: flex;
-            margin: 10px auto 0;
-            width: 100%;
-            height: auto;
-            padding: 5px 0;
-            border-bottom: 1px #ccc solid;
+        input[type="text"]:focus,
+        textarea:focus {
+            box-shadow: 0 0 7px #3498db;
+            border: 1px solid #3498db;
         }
-
-        #room-list li:first-of-type {
-            margin-top: 0;
-        }
-
-        #room-list li:last-of-type {
-            border-bottom: none;
-        }
-
-        #room-list li a {
-            display: block;
-            width: 100%;
-            height: auto;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        #room-list li .icon {
-            overflow: hidden;
-            margin-left: 5px;
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-        }
-
-        #room-list li .content {
-            flex: 1;
-        }
-
-        #room-list li .content {
-            flex: 1;
-        }
-
-        #room-list li .content strong {
-            margin-left: 2%;
-        }
-
-        #room-list li .content aside {
-            margin: 5px auto;
-            width: 96%;
-            height: auto;
-            color: #555;
+        input[type="text"]+input[type="text"]{
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -128,7 +85,7 @@
                     <span>お気に入り</span>
                 </a>
             </li>
-            <li class="selected">
+            <li>
                 <a href="./notice.html">
                     <svg viewBox="0 0 510 510">
                         <path d="M255,510c28.05,0,51-22.95,51-51H204C204,487.05,226.95,510,255,510z M420.75,357V216.75 c0-79.05-53.55-142.8-127.5-160.65V38.25C293.25,17.85,275.4,0,255,0c-20.4,0-38.25,17.85-38.25,38.25V56.1 c-73.95,17.85-127.5,81.6-127.5,160.65V357l-51,51v25.5h433.5V408L420.75,357z" />
@@ -152,162 +109,124 @@
         <div class="wrapper">
             <section>
                 <header>
-                    <h2>通知</h2>
+                    <h2>プロフィール編集</h2>
                 </header>
-                <ul class="tabs">
-                    <li data-tabs-tab="all" class="selected">全て</li>
-                    <li data-tabs-tab="message">メッセージ</li>
-                    <li data-tabs-tab="invitation">招待</li>
-                </ul>
-                <div class="tabs-tab selected" data-tabs-tab="all">
-                    <ul id="room-list">
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%e3%82%b7%e3%82%b9">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a>
-                                    <header>
-                                        <strong>システム開発グループ</strong>
-                                        <small>2018/11/06</small>
-                                    </header>
-                                    <aside>
-                                        <span>「システム開発グループ」から招待がありました</span>
-                                        <div>
-                                            <button class="btn-consent">承諾する</button>
-                                            <button class="btn-reject">拒否する</button>
-                                        </div>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./profile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./messageDirect.html">
-                                    <header>
-                                        <strong>いずやん</strong>
-                                        <small>2018/11/03</small>
-                                    </header>
-                                    <aside>
-                                        <span>「いずやん」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/87a334/ffffff/64x64.png?text=%e8%b6%a3%e5%91%b3">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./groupMessageDirect.html">
-                                    <header>
-                                        <strong>趣味人グループ</strong>
-                                        <small>2018/10/29</small>
-                                    </header>
-                                    <aside>
-                                        <span>「趣味人グループ」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/87a334/ffffff/64x64.png?text=%e8%b6%a3%e5%91%b3">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./groupMessageDirect.html">
-                                    <header>
-                                        <strong>趣味人グループ</strong>
-                                        <small>2018/10/15</small>
-                                    </header>
-                                    <aside>
-                                        <span>「趣味人グループ」への参加が承認されました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tabs-tab selected" data-tabs-tab="message">
-                    <ul id="room-list">
-                        <li>
-                            <div class="icon">
-                                <a href="./profile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./messageDirect.html">
-                                    <header>
-                                        <strong>いずやん</strong>
-                                        <small>2018/11/03</small>
-                                    </header>
-                                    <aside>
-                                        <span>「いずやん」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/87a334/ffffff/64x64.png?text=%e8%b6%a3%e5%91%b3">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="./groupMessageDirect.html">
-                                    <header>
-                                        <strong>趣味人グループ</strong>
-                                        <small>2018/10/29</small>
-                                    </header>
-                                    <aside>
-                                        <span>「趣味人グループ」からメッセージがありました</span>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tabs-tab selected" data-tabs-tab="invitation">
-                    <ul id="room-list">
-                        <li>
-                            <div class="icon">
-                                <a href="./groupProfile.html">
-                                    <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%e3%82%b7%e3%82%b9">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a>
-                                    <header>
-                                        <strong>システム開発グループ</strong>
-                                        <small>2018/11/06</small>
-                                    </header>
-                                    <aside>
-                                        <span>「システム開発グループ」から招待がありました</span>
-                                        <div>
-                                            <button class="btn-consent">承諾する</button>
-                                            <button class="btn-reject">拒否する</button>
-                                        </div>
-                                    </aside>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <form>
+                    <dl class="table">
+                        <dt>ニックネーム</dt>
+                        <dd>
+                            <input type="text" value="いずやん">
+                        </dd>
+                        
+                        <dt>本名</dt>
+                        <dd>
+                            <input type="text" value="伊豆 祐輝">
+                        </dd>
+
+                        <dt>学科</dt>
+                        <dd>
+                            <select>
+                                <optgroup label="IT・情報処理">
+                                    <option>ITエキスパート学科</option>
+                                    <option selected>ITスペシャリスト学科</option>
+                                    <option>情報処理学科 ITエンジニアコース</option>
+                                    <option>情報処理学科 Webエンジニアコース</option>
+                                </optgroup>
+                                <optgroup label="電子工学・回路設計・プログラム">
+                                    <option>情報工学科</option>
+                                </optgroup>
+                                <optgroup label="ビジネス・事務・営業・販売">
+                                    <option>情報ビジネス学科</option>
+                                </optgroup>
+                                <optgroup label="建築・インテリア">
+                                    <option>建築デザインコース</option>
+                                    <option>インテリアデザインコース</option>
+                                </optgroup>
+                                <optgroup label="製品デザイン・3次元CAD">
+                                    <option>インダストリアルデザイン学科</option>
+                                </optgroup>
+                                <optgroup label="Web・グラフィックデザイン">
+                                    <option>グラフィックデザイン学科</option>
+                                </optgroup>
+                                <optgroup label="ゲームプログラミング">
+                                    <option>ゲーム開発研究学科</option>
+                                    <option>エンターテインメントソフト学科</option>
+                                    <option>ゲームソフト学科</option>
+                                </optgroup>
+                                <optgroup label="3DCG・映像制作">
+                                    <option>3DCGアニメーション学科</option>
+                                </optgroup>
+                                <optgroup label="アニメ・原画・動画・ペイント・撮影">
+                                    <option>デジタルアニメ学科</option>
+                                </optgroup>
+                                <optgroup label="声優タレント">
+                                    <option>声優タレント学科</option>
+                                </optgroup>
+                                <optgroup label="音・楽曲制作・音響効果">
+                                    <option>サウンドクリエイト学科</option>
+                                </optgroup>
+                                <optgroup label="PA・照明・放送・レコーディング">
+                                    <option>サウンドテクニック学科</option>
+                                </optgroup>
+                                <optgroup label="その他">
+                                    <option>日本語学科</option>
+                                </optgroup>
+                            </select>
+                        </dd>
+                        
+                        <dt>学年</dt>
+                        <dd>
+                            <input type="number" min="1", max="4" value="3">
+                        </dd>
+
+                        <dt>自己紹介</dt>
+                        <dd>
+                            <textarea>
+いっしょはゴーシュの失敗かっこうたちを先生へい小太鼓だた。それからこう気の毒でしなとして一つたた。生意気だたのたもでしまた寄りの気の毒家のなかにはよし粗末たたて、おまえだけ包みがついしものだん。
+ねぼけすぎ何しかまわりをおいしいまして半分の下のジャズ顔がたっ第六ゴーシュ家のおじぎが待っていたたら。狸はこんどなって行っまし。ねどこは一しジャズのようでして行っな。額は頭先生とそこをしているます。ゴーシュは位のしばらくにありて額を音のようを食うてかっこうをわからてそっと糸をいうていまし。
+そのままもうみみずくを畑をしたじ。きみぎっしりと口で落ちるて馬車でなっんじ。ゴーシュが弾きだう。「鳥で弾きない。うそ、おまえでゴーシュ。砕け。」
+ここは今日のうちのまだ今夜のうちをしなくませ。
+灰はゴーシュを大ドレミファと出してセロを扉へ云いがどんと前しゃくにさわっがったままをつかまえるなた。しきりにおねがい弾いて、弾けて叫びて来なながらゴーシュからそれから譜を何だかぺん云いたまし。
+「リボンやる。かっこうをしまし。きな。
+                            </textarea>
+                        </dd>
+
+                        <dt id="skill">スキル</dt>
+
+                        <dd>
+                            <input type="text" value="webデザインからコーディングまで出来ます">
+                            <input type="text" value="webアプリケーションを作れます">
+                            <input type="text" value="作詞作曲できます">
+                            <button id="skill-add" type="button">追加</button>
+                        </dd>
+
+                        <dt id="hobby">特技・趣味</dt>
+
+                        <dd>
+                            <input type="text" value="CSSを手打ちでゴリゴリかけます">
+                            <input type="text" value="すぐに寝られる">
+                            <button id="hobby-add" type="button">追加</button>
+                        </dd>
+                    </dl>
+                    <button>編集</button>
+                </form>
             </section>
         </div>
     </main>
     <script src="./script/perfect-scrollbar.min.js"></script>
     <script src="./script/global.js"></script>
+    <script>
+        (function(){
+            document.getElementById("skill-add").addEventListener("click", function(){
+                var input   = document.createElement("input");
+                input.setAttribute("type", "text");
+                this.parentNode.insertBefore(input, this);
+            });
+            document.getElementById("hobby-add").addEventListener("click", function(){
+                var input   = document.createElement("input");
+                input.setAttribute("type", "text");
+                this.parentNode.insertBefore(input, this);
+            });
+        }());
+    </script>
 </body>
