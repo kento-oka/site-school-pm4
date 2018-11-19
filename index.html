@@ -13,6 +13,109 @@
     <link rel="stylesheet" href="./style/component/icon.css">
     <link rel="stylesheet" href="./style/perfect-scrollbar.css">
     <style>
+        .searches {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 0;
+            width: 100%;
+            height: auto;
+            padding: 0;
+        }
+        .searches li{
+            overflow: hidden;
+            margin: 10px 0 0;
+            width: 32%;
+            height: auto;
+            padding: 0;
+            border-radius: 10px;
+            background: #a55;
+            color: #fff;
+        }
+        .searches li:hover{
+            box-shadow: 0 2px 5px #ccc;
+        }
+        .searches li a {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            padding: .5em;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .searches li a:hover, .searches li a:visited, .searches li a:link, .searches li a:active {
+            color: inherit;
+        }
+
+
+
+        .course{
+            margin-top: 10px auto 0;
+            width: 98%;
+            padding: 2% 10px;
+        }
+        .course:hover{
+            cursor: pointer;
+            box-shadow: 0 2px 5px #ccc;
+        }
+        .course h3{
+            display: block;
+            margin: 0;
+            width: 100%;
+            border-left: solid 6px #a55;
+            padding: 0 0 0 .5em;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            font-weight: normal; 
+        }
+        .departments {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 0;
+            width: 100%;
+            height: auto;
+            padding: 0;
+        }
+        .departments li{
+            overflow: hidden;
+            margin: 10px 0 0;
+            width: 32%;
+            height: auto;
+            padding: 0;
+            border-radius: 10px;
+            background: #a55;
+            color: #fff;
+        }
+        .departments li:hover{
+            box-shadow: 0 2px 5px #ccc;
+        }
+        .departments li a {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+            padding: .5em;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .departments li a:hover, .departments li a:visited, .departments li a:link, .departments li a:active {
+            color: inherit;
+        }
+        @media (max-width: 620px) {
+            .departments li{
+                width: 100%;
+            }
+        }
+        @media (min-width: 621px) and (max-width: 1100px) {
+            .departments li{
+                width: 49%;
+            }
+        }
+
     </style>
 </head>
 
@@ -92,11 +195,178 @@
         <div class="wrapper">
             <section>
                 <header>
-                    <h2>タイトル</h2>
+                    <h2>検索</h2>
                 </header>
+                <ul class="searches">
+                    <li><a href="./search.html">学生検索</a></li>
+                    <li><a href="./searchGroup.html">グループ検索</a></li>
+                </ul>
+            </section>
+            <section>
+                <header>
+                    <h2>学科紹介</h2>
+                    <p>各学科の特色や、所属する学生の成果物などを見ることができます。</p>
+                </header>
+                <div class="course">
+                    <header>
+                        <h3>IT・情報処理</h3>
+                        <p>ITスキルの基礎を身につけ、あらゆる産業で活躍できるITエンジニアを育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">ITエキスパート学科</a></li>
+                        <li><a href="./department.html#it_specialist">ITスペシャリスト学科</a></li>
+                        <li><a href="./department.html#it_specialist">情報処理学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>WEBエンジニア</h3>
+                        <p>IoTなどインターネット技術を利用するサービスを、自らつくることのできるエンジニアを目指します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">情報処理学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>電子工学・回路設計・プログラム</h3>
+                        <p>最適なハードウェアシステムを設計・開発するマイコン応用技術者を育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">情報工学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>ビジネス・事務・営業・販売</h3>
+                        <p>実践的なIT活用能力を身につけ、あらゆるビジネスシーンで活躍できる人材をめざします。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">情報ビジネス学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>建築・インテリア</h3>
+                        <p>建築一般図面・実施設計図面やリアルな建築・インテリアC G作成のできる技術者を育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">建築デザインコース</a></li>
+                        <li><a href="./department.html#it_specialist">インテリアデザインコース</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>製品デザイン・3次元CAD</h3>
+                        <p>現場で広く3次元CADを活用できる技術者をめざし、実際の製品開発プロセスに必要な知識を学びます。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">インダストリアルデザイン学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>Web・グラフィックデザイン</h3>
+                        <p>企画力と現場で通用するスキルを養い、人の心を動かすような魅力のあるデザイナーを育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">グラフィックデザイン学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>ゲームプログラミング</h3>
+                        <p>基礎技術からプログラミングを習得し、オリジナルゲーム作品を創造できるプログラマを育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">ゲーム開発研究学科</a></li>
+                        <li><a href="./department.html#it_specialist">エンターテインメントソフト学科</a></li>
+                        <li><a href="./department.html#it_specialist">ゲームソフト学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>3DCG・映像制作</h3>
+                        <p>基礎能力から、キャラクターアニメーションを中心としたプロダクションプロセスを一貫して習得します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">3DCGアニメーション学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>アニメ・原画・動画・ペイント・撮影</h3>
+                        <p>アニメの作画に必要な基礎画力を養成し、コアスキルである動画・原画技術を習得します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">デジタルアニメ学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>声優タレント</h3>
+                        <p>発声・発音法や表現力・コミュニケーション力を磨き、声のプロとして活躍する声優・タレントを育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">声優タレント学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>音・楽曲制作・音響効果</h3>
+                        <p>楽曲制作やレコーディングのスキルを習得し、「音の職人」となるサウンドクリエイターを育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">サウンドクリエイト学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>PA・照明・放送・レコーディング</h3>
+                        <p>舞台や放送局など多様なフィールドで活躍する「音」と「光」、「映像」のプロフェッショナルを育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">サウンドテクニック学科</a></li>
+                    </ul>
+                </div>
+
+                <div class="course">
+                    <header>
+                        <h3>その他</h3>
+                        <p>日本語教育などを通じて将来的に日本で活躍できる人を育成します。</p>
+                    </header>
+                    <ul class="departments">
+                        <li><a href="./department.html#it_specialist">日本語学科</a></li>
+                    </ul>
+                </div>
             </section>
         </div>
     </main>
     <script src="./script/perfect-scrollbar.min.js"></script>
     <script src="./script/global.js"></script>
+    <script>
+        (function(){
+            var courses = document.getElementsByClassName("course"),
+                length  = courses.length
+            ;
+
+            for (var i = 0; i < length; i++) {
+                courses[i].addEventListener("click", function(){
+                    location.href = "./department.html";
+                });
+            }
+        })();
+    </script>
 </body>

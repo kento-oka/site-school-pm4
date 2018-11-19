@@ -14,85 +14,103 @@
     <link rel="stylesheet" href="./style/perfect-scrollbar.css">
     <style>
         /**
+            * @see https://saruwakakun.com
+            */
+        .ribbon {
+            display: inline-block;
+            position: relative;
+            height: 1.2em;/*高さ*/
+            line-height: 1.2em;/*高さ*/
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 40px 0 18px;/*文字の左右の余白*/
+            font-size: 18px;/*文字サイズ*/
+            background: #a55;/*背景色*/
+            color: #fff;/*文字色*/
+            box-sizing: border-box;
+        }
+        .ribbon:after {
+            position: absolute;
+            content: '';
+            width: 0px;
+            height: 0px;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            border-width: .6em .3em .6em 0;
+            border-color: transparent #f9f9f9 transparent transparent;
+            border-style: solid;
+        }
+
+        /**
          * 
          */
-        .cards {
+
+        #results {
             list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: block;
             margin: 0;
             width: 100%;
             height: auto;
             padding: 0;
         }
 
-        .cards li{
-            overflow: hidden;
-            margin: 10px 0 0;
-            width: 32%;
+        #results li {
+            display: block;
+            margin: 10px auto 0;
+            width: 100%;
             height: auto;
-            padding: 0;
-            box-shadow: 0 2px 5px #ccc;
+            padding: 5px 0;
+            border-bottom: 1px #ccc solid;
         }
-        @media (max-width: 620px) {
-            .cards li{
-                width: 100%;
-            }
-        }
-        @media (min-width: 621px) and (max-width: 1100px) {
-            .cards li{
-                width: 49%;
-            }
+        #results li:hover{
+            background: #eee;
         }
 
-        .cards li .img {
+        #results li:first-of-type {
+            margin-top: 0;
+        }
+
+        #results li:last-of-type {
+            border-bottom: none;
+        }
+
+        #results li > a {
+            display: flex;
+            margin: 0 auto;
             width: 100%;
+            text-decoration: none;
+            color: inherit;
         }
-        .cards li .content {
-            margin: 5px auto;
-            width: 95%;
+
+        #results li a:hover, #results li a:visited, #results li a:link, #results li a:active {
+            color: inherit;
         }
-        .cards li .content h3 {
-            display: block;
-            width: 100%;
-            border-left: solid 6px #a55;
-            padding: 0 0 0 .5em;
-            font-size: 1.2em;
-            line-height: 1.5em;
-            font-weight: normal;
-        }
-        .cards li .link {
-            width: 100%;
-        }
-        .cards li .link a {
-            display: block;
-            width: 100%;
-            text-align: center;
-            color: #555;
-        }
-        .cards li .link a:hover, .cards li .link a:visited, .cards li .link a:link, .cards li .link a:active {
-            color: #555;
-        }
-        .cards li .link a img{
-            width: 100%;
-            object-fit: contain;
-        }
-        .cards li .link a audio{
-            width: 100%;
-        }
-        .cards li .link .youtube {
+
+        #results li .icon {
             overflow: hidden;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
+            margin-left: 5px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
         }
-        .cards li .link .youtube iframe{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+
+        #results li .content {
+            flex: 1;
+        }
+
+        #results li .content {
+            flex: 1;
+        }
+
+        #results li .content strong {
+            margin-left: 2%;
+        }
+
+        #results li .content div {
+            margin: 5px auto;
+            width: 96%;
+            height: auto;
         }
     </style>
 </head>
@@ -141,7 +159,7 @@
                     <span>メッセージ</span>
                 </a>
             </li>
-            <li>
+            <li class="selected">
                 <a href="./favorite.html">
                     <svg viewBox="0 0 19.481 19.481">
                         <path d="m10.201,.758l2.478,5.865 6.344,.545c0.44,0.038 0.619,0.587 0.285,0.876l-4.812,4.169 1.442,6.202c0.1,0.431-0.367,0.77-0.745,0.541l-5.452-3.288-5.452,3.288c-0.379,0.228-0.845-0.111-0.745-0.541l1.442-6.202-4.813-4.17c-0.334-0.289-0.156-0.838 0.285-0.876l6.344-.545 2.478-5.864c0.172-0.408 0.749-0.408 0.921,0z" />
@@ -173,70 +191,61 @@
         <div class="wrapper">
             <section>
                 <header>
-                    <h2>IT・情報処理コース</h2>
+                    <h2>お気に入り一覧</h2>
                 </header>
-                <h3>ITエキスパート学科</h3>
-                <p>システム構築プロジェクトの中で活躍できるITエンジニアを育成。</p>
-                <p>情報処理技術者試験（基本情報・応用情報・高度）の合格。</p>
-
-                <h3 id="it_specialist">ITスペシャリスト学科</h3>
-                <p>ITスキルの基礎の上に、 web/インターネット、セキュリティなどの先進的な技術を持ったITエンジニアを育成。</p>
-                <p>情報処理技術者試験（基本情報・応用情報・高度）の合格。</p>
-
-                <h3>情報処理学科 ITエンジニアコース</h3>
-                <p>ITスキルの基礎を身に着け、IT産業界で活躍できるITエンジニアを育成。</p>
-                <p>情報処理技術者試験（基本情報・応用情報）の合格。</p>
-
-                <h3>情報処理学科 Webエンジニアコース</h3>
-                <p>企画からデザイン、ネットワーク・データベース・プログラミング技術など、webエンジニアになるための一連の開発工程を学び、フルスタック人材を育成。</p>
-            </section>
-            <section>
-                <header>
-                    <h2>製作物</h2>
-                </header>
-                <ul class="cards">
+                <ul id="results">
                     <li>
-                        <div class="content">
-                            <h3>チャットアプリ</h3>
-                            <p>とても単純なチャットサービス</p>
-                        </div>
-                        <div class="link">
-                            <a href="https://example.com">https://example.com</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content">
-                            <h3>〇〇のテーマソングを作った</h3>
-                            <p>〇〇のテーマソングを作りました。明るい感じをイメージしました。</p>
-                        </div>
-                        <div class="link">
-                            <audio src="https://maoudamashii.jokersounds.com/music/bgm/mp3/bgm_maoudamashii_piano41.mp3" controls>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content">
-                            <h3>学祭のロゴを作成しました</h3>
-                            <p>2018年度学祭のロゴを作成しました。</p>
-                        </div>
-                        <div class="link">
-                            <a href="http://blog.kobedenshi.ac.jp/wp-content/uploads/2017/08/170820_logo-494x349.png">
-                                <img src="http://blog.kobedenshi.ac.jp/wp-content/uploads/2017/08/170820_logo-494x349.png">
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="content">
-                            <h3>いい感じの動画を作りました</h3>
-                            <p>とてもいい感じの動画を作りました。動画選択は趣味です。</p>
-                        </div>
-                        <div class="link">
-                            <div class="youtube">
-                                    <iframe src="https://www.youtube.com/embed/BshXJ7hxcn8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <a href="./profile.html">
+                            <div class="icon">
+                                <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
                             </div>
-                        </div>
+                            <div class="content">
+                                <header>
+                                    <strong>いずやん</strong>
+                                    <small>2018/11/03</small>
+                                </header>
+                                <div>
+                                    <span class="ribbon">情報処理学科</span>
+                                    <span class="ribbon">募集受付中</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./profile.html">
+                            <div class="icon">
+                                <img src="http://placehold.jp/20/34a39f/ffffff/64x64.png?text=%E9%87%9C%E5%85%83">
+                            </div>
+                            <div class="content">
+                                <header>
+                                    <strong>かまかず</strong>
+                                    <small>2018/10/15</small>
+                                </header>
+                                <div>
+                                    <span class="ribbon">ITエキスパート学科</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./profile.html">
+                            <div class="icon">
+                                <img src="http://placehold.jp/20/a39f34/ffffff/64x64.png?text=%E5%AE%AE%E5%86%85">
+                            </div>
+                            <div class="content">
+                                <header>
+                                    <strong>みやち</strong>
+                                </header>
+                                <div>
+                                    <span class="ribbon">ITスペシャリスト学科</span>
+                                    <span class="ribbon">募集受付中</span>
+                                </div>
+                            </div>
+                        </a>
                     </li>
                 </ul>
             </section>
+        </div>
     </main>
     <script src="./script/perfect-scrollbar.min.js"></script>
     <script src="./script/global.js"></script>
