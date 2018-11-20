@@ -70,6 +70,44 @@
             color: inherit;
         }
 
+        .users li > a {
+            display: flex !important;
+            margin: 0 auto;
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .users li a:hover, .users li a:visited, .users li a:link, .users li a:active {
+            color: inherit;
+        }
+
+        .users li .icon {
+            overflow: hidden;
+            margin-left: 5px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+        }
+
+        .users li .content {
+            flex: 1;
+        }
+
+        .users li .content {
+            flex: 1;
+        }
+
+        .users li .content strong {
+            margin-left: 2%;
+        }
+
+        .users li .content div {
+            margin: 5px auto;
+            width: 96%;
+            height: auto;
+        }
+
         /**
          * @see https://saruwakakun.com
          */
@@ -254,7 +292,7 @@
                     <span>グループ作成</span>
                 </a>
             </li>
-            <li class="selected">
+            <li>
                 <a href="./profile.html">
                     <svg viewBox="0 0 438.529 438.529">
                         <path d="M219.265,219.267c30.271,0,56.108-10.71,77.518-32.121c21.412-21.411,32.12-47.248,32.12-77.515 c0-30.262-10.708-56.1-32.12-77.516C275.366,10.705,249.528,0,219.265,0S163.16,10.705,141.75,32.115 c-21.414,21.416-32.121,47.253-32.121,77.516c0,30.267,10.707,56.104,32.121,77.515 C163.166,208.557,189.001,219.267,219.265,219.267z" />
@@ -304,34 +342,30 @@
         <div class="wrapper">
             <section>
                 <div id="operations">
-                    <a class="button" onclick="alert('お気に入りに登録しました')">お気に入り</a>
-                    <a class="button" href="./profileEdit.html">編集</a>
+                    <a class="button" onclick="alert('参加申し込みを行いました。\nグループからの連絡をお待ちください')">参加申し込み</a>
+                    <a class="button" href="./groupProfileEdit.html">編集</a>
                 </div>
                 <div id="basic">
                     <div id="basic_icon">
-                        <img src="http://placehold.jp/20/a3344b/ffffff/128x128.png?text=%E4%BC%8A%E8%B1%86">
-                        <h2>いずやん</h2>
+                        <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%e3%82%b7%e3%82%b9">
                     </div>
                     <div>
                         <div>
-                            <span class="ribbon">募集受付中</span>
+                            <span class="ribbon">メンバー募集中</span>
                         </div>
                         <dl class="table">
-                            <dt>本名</dt>
-                            <dd>伊豆 祐輝</dd>
+                            <dt>名称</dt>
+                            <dd>システム開発グループ</dd>
 
-                            <dt>学科</dt>
-                            <dd>ITスペシャリスト学科</dd>
-
-                            <dt>学年</dt>
-                            <dd>3年</dd>
+                            <dt>参加人数</dt>
+                            <dd>4人</dd>
                         </dl>
                     </div>
                 </div>
             </section>
             <section>
                 <header>
-                    <h2>自己紹介</h2>
+                    <h2>グループ説明</h2>
                 </header>
                 <p>いっしょはゴーシュの失敗かっこうたちを先生へい小太鼓だた。それからこう気の毒でしなとして一つたた。生意気だたのたもでしまた寄りの気の毒家のなかにはよし粗末たたて、おまえだけ包みがついしものだん。</p>
                 <p>ねぼけすぎ何しかまわりをおいしいまして半分の下のジャズ顔がたっ第六ゴーシュ家のおじぎが待っていたたら。狸はこんどなって行っまし。ねどこは一しジャズのようでして行っな。額は頭先生とそこをしているます。ゴーシュは位のしばらくにありて額を音のようを食うてかっこうをわからてそっと糸をいうていまし。</p>
@@ -343,29 +377,58 @@
             </section>
             <section>
                 <header>
-                    <h2>所属グループ</h2>
-                    <a class="button">招待する</a>
+                    <h2>メンバー</h2>
                 </header>
-                <ul class="cp_list">
-                    <li>webデザインからコーディングまで出来ます</li>
-                    <li>webアプリケーションを作れます</li>
-                    <li>作詞作曲できます</li>
-                </ul>
-            </section>
-            <section>
-                <header>
-                    <h2>スキル・特技・趣味</h2>
-                </header>
-                <h3>スキル</h3>
-                <ul class="cp_list">
-                    <li>webデザインからコーディングまで出来ます</li>
-                    <li>webアプリケーションを作れます</li>
-                    <li>作詞作曲できます</li>
-                </ul>
-                <h3>特技・趣味</h3>
-                <ul class="cp_list">
-                    <li>CSSを手打ちでゴリゴリかけます</li>
-                    <li>すぐに寝られる</li>
+                <ul class="cp_list users">
+                    <li>
+                        <a href="./profile.html">
+                            <div class="icon">
+                                <img src="http://placehold.jp/20/a3344b/ffffff/64x64.png?text=%E4%BC%8A%E8%B1%86">
+                            </div>
+                            <div class="content">
+                                <header>
+                                    <strong>いずやん</strong>
+                                    <small>2018/11/03</small>
+                                </header>
+                                <div>
+                                    <span class="ribbon">情報処理学科</span>
+                                    <span class="ribbon">募集受付中</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./profile.html">
+                            <div class="icon">
+                                <img src="http://placehold.jp/20/34a39f/ffffff/64x64.png?text=%E9%87%9C%E5%85%83">
+                            </div>
+                            <div class="content">
+                                <header>
+                                    <strong>かまかず</strong>
+                                    <small>2018/10/15</small>
+                                </header>
+                                <div>
+                                    <span class="ribbon">ITエキスパート学科</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./profile.html">
+                            <div class="icon">
+                                <img src="http://placehold.jp/20/a39f34/ffffff/64x64.png?text=%E5%AE%AE%E5%86%85">
+                            </div>
+                            <div class="content">
+                                <header>
+                                    <strong>みやち</strong>
+                                </header>
+                                <div>
+                                    <span class="ribbon">ITスペシャリスト学科</span>
+                                    <span class="ribbon">募集受付中</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </section>
             <section>
